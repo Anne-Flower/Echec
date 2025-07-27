@@ -8,11 +8,12 @@ export const mockPlayers: Player[] = [
   { id: 5, name: "Ian Nepomniachtchi", elo: 2785 },
 ]
 
-function sort(players: Player[]): Player[] {
+function sortToFacePlayers(players: Player[]): Player[] {
   let pileIncreasingOrder: Player[] = [];
   let pileIntruder:Player[] = [];
 
   let lastElo = players[0].elo;
+
     for (let i = 0; i < players.length; i++) {
       const player = players[i];
       if (player.elo >= lastElo) {
@@ -25,4 +26,4 @@ function sort(players: Player[]): Player[] {
 
   return [...players];
 }
-export default sort
+export default sortToFacePlayers
