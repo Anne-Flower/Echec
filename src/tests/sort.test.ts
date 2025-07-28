@@ -1,16 +1,30 @@
 import {describe, expect, test} from '@jest/globals';
 
-// const sort = () => {
-
+// function sort(list: number[]): any {
+//   const toto = [1, 4, 6, 78];
+//   return toto
 // };
 
 function sort(list: number[]): any {
-  const toto = [1, 4, 6, 78];
-  return toto
+  let newArray: number[] = [];
+
+  for(let i = 0; i < list.length; i++) {
+    for(let j = 0; j < list.length; j++) {
+      if (list[i] < newArray[j]) {
+        newArray.splice(j, 0, list[i])
+      }
+    }
+  }
+  return newArray;
 };
 
 describe('sort function', () => {
   test('sort a list', () => {
+    const list = [1, 6, 78, 4];
+    expect(sort(list)).toEqual([1, 4, 6, 78]);
+  });
+
+  test('sort an orderd list', () => {
     const list = [1, 6, 78, 4];
     expect(sort(list)).toEqual([1, 4, 6, 78]);
   });
