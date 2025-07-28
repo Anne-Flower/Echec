@@ -7,12 +7,18 @@ import {describe, expect, test} from '@jest/globals';
 
 function sort(list: number[]): any {
   let newArray: number[] = [];
-
+  
   for(let i = 0; i < list.length; i++) {
-    for(let j = 0; j < list.length; j++) {
+    let nbInserted = false;
+    for(let j = 0; j < newArray.length; j++) {
       if (list[i] < newArray[j]) {
-        newArray.splice(j, 0, list[i])
+        newArray.splice(j, 0, list[i]);
+        nbInserted = true;
+        break;
       }
+    }
+    if (!nbInserted) {
+      newArray.push(list[i])
     }
   }
   return newArray;
